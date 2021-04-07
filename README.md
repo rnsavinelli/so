@@ -8,4 +8,4 @@ Sistemas Operativos as taught in autumn 2021, and are provided under an MIT lice
 
 All material is provided under an MIT License unless otherwise specified.
 
-MIT License: <https://mit-license.org/> or see the [`LICENSE`](https://github.com/rnsavinelli/aed/blob/master/LICENSE) file.
+MIT License: <https://mit-license.org/> or see the [`LICENSE`](https://github.com/rnsavinelli/so/blob/master/LICENSE) file.
