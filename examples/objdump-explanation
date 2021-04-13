@@ -1,0 +1,3 @@
+SHOW ASSEMBLER CODE OF AN ELF FILE
+
+objdump -d $ELF_FILE | less
