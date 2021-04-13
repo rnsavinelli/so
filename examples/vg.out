@@ -1,0 +1,5 @@
+==54551==
+==54551== Process terminating with default action of signal 4 (SIGILL): dumping core
+==54551==  Illegal opcode at address 0x10919D
+==54551==    at 0x10919D: main (execute_privileged_instruction.c:17)
+Illegal instruction (core dumped)
