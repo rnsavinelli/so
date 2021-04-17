@@ -1,0 +1,3 @@
+[submodule "lib/so-commons-library"]
+	path = lib/so-commons-library
+	url = https://github.com/sisoputnfrba/so-commons-library.git
