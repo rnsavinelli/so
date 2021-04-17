@@ -1,0 +1,40 @@
+[DEBUG] 23:41:36:127 tp0/(1825:1825): I'm a log
+[DEBUG] 00:09:14:156 tp0.c/(2056:2056): I'm a log
+[DEBUG] 00:09:47:714 tp0.c/(2059:2059): I'm a log
+[DEBUG] 00:09:53:72 tp0.c/(2070:2070): I'm a log
+[DEBUG] 23:42:09:837 tp0.c/(2803:2803): I'm a log
+[DEBUG] 23:43:29:246 tp0.c/(2819:2819): I'm a log
+[DEBUG] 23:44:14:844 tp0.c/(2822:2822): I'm a log
+[DEBUG] 23:46:09:214 tp0.c/(2833:2833): I'm a log
+[DEBUG] 00:22:24:135 tp0.c/(2924:2924): Inicializando tp0
+[DEBUG] 00:22:43:124 tp0.c/(2927:2927): Inicializando tp0
+[DEBUG] 00:25:04:642 tp0.c/(2960:2960): Inicializando tp0
+[DEBUG] 00:26:46:177 tp0.c/(2982:2982): Inicializando tp0
+[DEBUG] 00:28:49:624 tp0.c/(3036:3036): Inicializando tp0
+[DEBUG] 00:29:07:670 tp0.c/(3038:3038): Inicializando tp0
+[DEBUG] 00:32:03:479 tp0.c/(3060:3060): Inicializando tp0
+[DEBUG] 00:33:39:10 tp0.c/(3063:3063): Inicializando tp0
+[DEBUG] 00:34:38:530 tp0.c/(3077:3077): Inicializando tp0
+[DEBUG] 00:35:59:545 tp0.c/(3089:3089): Inicializando tp0
+[DEBUG] 00:37:38:349 tp0.c/(3101:3101): Inicializando tp0
+[DEBUG] 00:37:49:136 tp0.c/(3103:3103): Inicializando tp0
+[DEBUG] 00:40:30:703 tp0.c/(3116:3116): Inicializando tp0
+[DEBUG] 00:40:38:888 tp0.c/(3118:3118): Inicializando tp0
+[INFO] 00:40:40:472 tp0.c/(3118:3118): d
+[INFO] 00:40:45:816 tp0.c/(3118:3118): gd
+[INFO] 00:40:46:932 tp0.c/(3118:3118): d
+[INFO] 00:40:47:552 tp0.c/(3118:3118): d
+[INFO] 00:40:47:884 tp0.c/(3118:3118): d
+[INFO] 00:40:48:757 tp0.c/(3118:3118): d
+[INFO] 00:40:51:861 tp0.c/(3118:3118): 
+[DEBUG] 00:41:27:640 tp0.c/(3120:3120): Inicializando tp0
+[DEBUG] 00:41:40:993 tp0.c/(3122:3122): Inicializando tp0
+[INFO] 00:41:45:218 tp0.c/(3122:3122): lorem ipsum
+[INFO] 00:41:51:697 tp0.c/(3122:3122): j
+[DEBUG] 00:43:27:638 tp0.c/(3135:3135): Inicializando tp0
+[INFO] 00:43:29:458 tp0.c/(3135:3135): sd
+[INFO] 00:43:32:586 tp0.c/(3135:3135): sdaa
+[INFO] 00:43:34:759 tp0.c/(3135:3135): sssss
+[INFO] 00:43:35:291 tp0.c/(3135:3135): s
+[INFO] 00:43:35:927 tp0.c/(3135:3135): s
+[INFO] 00:43:40:388 tp0.c/(3135:3135): Lorem ipsum\

@@ -1,0 +1,32 @@
+[INFO] 21:02:03:118 Servidor/(3639:3639): Servidor listo para recibir al cliente
+[INFO] 00:20:44:392 Servidor/(2891:2891): Servidor listo para recibir al cliente
+[INFO] 00:22:24:135 Servidor/(2891:2891): Se conecto un cliente!
+[ERROR] 00:22:24:284 Servidor/(2891:2891): el cliente se desconecto. Terminando servidor
+[INFO] 00:32:36:800 Servidor/(3062:3062): Servidor listo para recibir al cliente
+[INFO] 00:33:40:55 Servidor/(3062:3062): Se conecto un cliente!
+[INFO] 00:33:40:63 Servidor/(3062:3062): Me llego el mensaje Hola, soy un valor
+[ERROR] 00:33:50:122 Servidor/(3062:3062): el cliente se desconecto. Terminando servidor
+[INFO] 00:34:33:564 Servidor/(3076:3076): Servidor listo para recibir al cliente
+[INFO] 00:34:38:576 Servidor/(3076:3076): Se conecto un cliente!
+[INFO] 00:34:38:582 Servidor/(3076:3076): Me llego el mensaje Hola, soy un valor
+[ERROR] 00:34:44:2 Servidor/(3076:3076): el cliente se desconecto. Terminando servidor
+[INFO] 00:35:54:211 Servidor/(3088:3088): Servidor listo para recibir al cliente
+[INFO] 00:35:59:592 Servidor/(3088:3088): Se conecto un cliente!
+[INFO] 00:35:59:598 Servidor/(3088:3088): Me llego el mensaje Hola, soy un valor
+[ERROR] 00:36:02:326 Servidor/(3088:3088): el cliente se desconecto. Terminando servidor
+[INFO] 00:37:45:540 Servidor/(3102:3102): Servidor listo para recibir al cliente
+[INFO] 00:37:49:181 Servidor/(3102:3102): Se conecto un cliente!
+[INFO] 00:37:49:188 Servidor/(3102:3102): Me llego el mensaje Hola, soy un valor
+[ERROR] 00:37:50:773 Servidor/(3102:3102): el cliente se desconecto. Terminando servidor
+[INFO] 00:40:33:977 Servidor/(3117:3117): Servidor listo para recibir al cliente
+[INFO] 00:40:38:933 Servidor/(3117:3117): Se conecto un cliente!
+[INFO] 00:40:38:939 Servidor/(3117:3117): Me llego el mensaje Hola, soy un valor
+[ERROR] 00:40:52:350 Servidor/(3117:3117): el cliente se desconecto. Terminando servidor
+[INFO] 00:41:31:289 Servidor/(3121:3121): Servidor listo para recibir al cliente
+[INFO] 00:41:41:38 Servidor/(3121:3121): Se conecto un cliente!
+[INFO] 00:41:41:46 Servidor/(3121:3121): Me llego el mensaje Hola, soy un valor
+[ERROR] 00:41:54:568 Servidor/(3121:3121): el cliente se desconecto. Terminando servidor
+[INFO] 00:43:24:458 Servidor/(3134:3134): Servidor listo para recibir al cliente
+[INFO] 00:43:27:684 Servidor/(3134:3134): Se conecto un cliente!
+[INFO] 00:43:27:691 Servidor/(3134:3134): Me llego el mensaje Hola, soy un valor
+[ERROR] 00:43:42:78 Servidor/(3134:3134): el cliente se desconecto. Terminando servidor
