@@ -1,18 +1,18 @@
 ### Exercise 1
 
-```
+```c
 variables_compartidas a = b = 1;
 ```
-```
+```c
 semaphore sa = sb = 1;
 ```
 
 #### Proceso 1
 
-```
+```c
 variable_local d = 1;
 
-While (TRUE){
+while (true){
     WAIT(sa);
     a = a + d;
     SIGNAL(sa);
@@ -25,10 +25,10 @@ While (TRUE){
 
 #### Proceso 2
 
-```
+```c
 variable_local e = 2;
 
-While (TRUE){
+while (true){
     WAIT(sb);
     b = b * e;
     SIGNAL(sb);
@@ -41,32 +41,87 @@ While (TRUE){
 
 ### Exercise 2.a
 
-```
-    #define RECURSOS 3
-    #define INSTANCIAS M
+```c
+#define RECURSOS 3
+#define INSTANCIAS M
 
-    semaforo s[RECURSOS] = {INSTANCIAS};
+semaphore s[RECURSOS] = {INSTANCIAS};
 
-    while (TRUE){
-        id_recurso = pedir_recurso();
-        WAIT(s[id_recurso])
-        usar_recurso(id_recurso);
-        SIGNAL(s[id_recurso]);
-    }
+while (true){
+    id_recurso = pedir_recurso();
+    WAIT(s[id_recurso])
+    usar_recurso(id_recurso);
+    SIGNAL(s[id_recurso]);
+}
 ```
 
 ### Exercise 2.b
 
+```c
+#define RECURSOS M
+#define INSTANCIAS 3
+
+semaphore s[RECURSOS] = {INSTANCIAS};
+
+while (TRUE){
+    id_recurso = pedir_recurso();
+    WAIT(s[id_recurso])
+    usar_recurso(id_recurso);
+    SIGNAL(s[id_recurso]);
+}
 ```
-    #define RECURSOS M
-    #define INSTANCIAS 3
 
-    semaforo s[RECURSOS] = {INSTANCIAS};
+### Exercise 3
 
-    while (TRUE){
-        id_recurso = pedir_recurso();
-        WAIT(s[id_recurso])
-        usar_recurso(id_recurso);
-        SIGNAL(s[id_recurso]);
-    }
+```c
+#define IMPRESORAS 3
+#define SCANNERS 2
+```
+```c
+int variable_compartida = 0;
+```
+
+```c
+semaphore s_impresora = IMPRESORAS;
+semaphore s_scanners = SCANNERS;
+semaphore s_variable_compartida = 1;
+```
+
+#### Proceso A
+
+```c
+While (true) {
+    WAIT(s_impresora);
+    usar_impresora();
+    SIGNAL(s_impresora);
+    WAIT(s_variable_compartida);
+    variable_compartida++;
+    SIGNAL(s_variable_compartida);
+}
+```
+
+#### Proceso B
+
+```c
+while (true) {
+    WAIT(s_variable_compartida);
+    variable_compartida++;
+    SIGNAL(s_variable_compartida);
+    WAIT(s_scanner);
+    usar_scanner();
+    SIGNAL(s_scanner);
+}
+```
+
+#### Proceso C
+
+```c
+While (true){
+    WAIT(s_scanner);
+    usar_scanner();
+    SIGNAL(s_scanner);
+    WAIT(s_impresora);
+    usar_impresora();
+    SIGNAL(s_impresora);
+}
 ```
