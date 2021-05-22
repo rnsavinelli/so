@@ -139,8 +139,8 @@ semaphore sb = 0;
 run_a () {
     while(true) {
         WAIT(sa);
-        SIGNAL(sb);
         ...
+        SIGNAL(sb);
     }
 }
 ```
@@ -151,8 +151,52 @@ run_a () {
 run_b () {
     while(true) {
         WAIT(sb);
-        SIGNAL(sa);
         ...
+        SIGNAL(sa);
+    }
+}
+```
+
+### Exercise 5
+
+```c
+semaphore sa = 1;
+semaphore sb = 0;
+semaphore sc = 0;
+```
+
+#### Proceso A
+
+```c
+run_a () {
+    while(true) {
+        WAIT(sa);
+        ...
+        SIGNAL(sb);
+    }
+}
+```
+
+#### Proceso B
+
+```c
+run_b () {
+    while(true) {
+        WAIT(sb);
+        ...
+        SIGNAL(sc);
+    }
+}
+```
+
+#### Proceso C
+
+```c
+run_b () {
+    while(true) {
+        WAIT(sc);
+        ...
+        SIGNAL(sa);
     }
 }
 ```
