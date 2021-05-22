@@ -200,3 +200,51 @@ run_c () {
     }
 }
 ```
+
+### Exercise 6
+
+```c
+semaphore sa = 0;
+semaphore sb = 1;
+semaphore sc = 0;
+```
+
+#### Proceso A
+
+```c
+run_a () {
+    while(true) {
+        WAIT(sa);
+        ...
+        SIGNAL(sc);
+        ...
+        WAIT(sa);
+        ...
+        SIGNAL(sb);
+    }
+}
+```
+
+#### Proceso B
+
+```c
+run_b () {
+    while(true) {
+        WAIT(sb);
+        ...
+        SIGNAL(sa);
+    }
+}
+```
+
+#### Proceso C
+
+```c
+run_c () {
+    while(true) {
+        WAIT(sc);
+        ...
+        SIGNAL(sa);
+    }
+}
+```
