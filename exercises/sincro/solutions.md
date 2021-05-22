@@ -57,4 +57,16 @@ While (TRUE){
 
 ### Exercise 2.b
 
+```
+    #define RECURSOS M
+    #define INSTANCIAS 3
 
+    semaforo s[RECURSOS] = {INSTANCIAS};
+
+    while (TRUE){
+        id_recurso = pedir_recurso();
+        WAIT(s[id_recurso])
+        usar_recurso(id_recurso);
+        SIGNAL(s[id_recurso]);
+    }
+```
