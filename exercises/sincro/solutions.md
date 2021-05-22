@@ -125,3 +125,34 @@ While (true){
     SIGNAL(s_impresora);
 }
 ```
+
+### Exercise 4
+
+```c
+semaphore sa = 1;
+semaphore sb = 0;
+```
+
+#### Proceso A
+
+```c
+run_a () {
+    while(true) {
+        WAIT(sa);
+        SIGNAL(sb);
+        ...
+    }
+}
+```
+
+#### Proceso B
+
+```c
+run_b () {
+    while(true) {
+        WAIT(sb);
+        SIGNAL(sa);
+        ...
+    }
+}
+```
