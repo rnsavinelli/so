@@ -192,7 +192,7 @@ run_b () {
 #### Proceso C
 
 ```c
-run_b () {
+run_c () {
     while(true) {
         WAIT(sc);
         ...
