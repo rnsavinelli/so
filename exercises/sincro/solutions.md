@@ -279,7 +279,7 @@ while (true) {
 }
 ```
 
-### Proceso 2
+#### Proceso 2
 
 ```c
 while (true) {
@@ -325,7 +325,7 @@ while (true) {
 }
 ```
 
-### Proceso 2
+#### Proceso 2
 
 ```c
 while (true) {
@@ -377,7 +377,7 @@ while (true) {
 }
 ```
 
-### Proceso 2 (Controlador entrada)
+#### Proceso 2 (Controlador entrada)
 
 ```c
 while (true) {
@@ -397,7 +397,7 @@ while (true) {
 }
 ```
 
-### Proceso 3 (Controlador salida)
+#### Proceso 3 (Controlador salida)
 
 ```c
 while (true) {
