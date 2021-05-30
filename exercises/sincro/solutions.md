@@ -248,3 +248,168 @@ run_c () {
     }
 }
 ```
+
+### Exercise 7.a
+
+```c
+list_t lista[];
+```
+```c
+semaphore mutex_lista = 1;
+
+semaphore compiladores = N;
+semaphore notificaciones = 0;
+```
+
+#### Proceso 1
+
+```c
+while (true) {
+    id_programa = obtener_nuevo_programa();
+
+    wait(compiladores);
+    r = compilar_programa(id_programa);
+    signal(compiladores);
+
+    wait(mutex_lista);
+    depositar_resultado(r, lista);
+    signal(mutex_lista);
+
+    signal(notificaciones);
+}
+```
+
+### Proceso 2
+
+```c
+while (true) {
+    wait(notificaciones)
+
+    wait(mutex_lista);
+    r2 = retirar_resultado(lista);
+    signal(mutex_lista);
+
+    enviar_email(r2);
+}
+```
+
+### Exercise 7.b
+
+```c
+list_t lista[];
+```
+```c
+semaphore mutex_lista = 1;
+
+semaphore compiladores = N;
+semaphore notificaciones = 0;
+semaphore lista_size = M;
+```
+
+#### Proceso 1
+
+```c
+while (true) {
+    id_programa = obtener_nuevo_programa();
+
+    wait(compiladores);
+    r = compilar_programa(id_programa);
+    signal(compiladores);
+
+    wait(lista_size);
+    wait(mutex_lista);
+    depositar_resultado(r, lista);
+    signal(mutex_lista);
+
+    signal(notificaciones);
+}
+```
+
+### Proceso 2
+
+```c
+while (true) {
+    wait(notificaciones)
+
+    wait(mutex_lista);
+    r2 = retirar_resultado(lista);
+    signal(mutex_lista);
+    signal(lista_size);
+
+    enviar_email(r2);
+}
+```
+
+### Exercise 8
+
+```c
+// variable compartida
+uint32_t pistas_libres = 10;
+```
+```c
+semaphore mutex_pistas = 1;
+
+semaphore solicitud_pista = 0;
+semaphore pistas_otorgadas = 0;
+semaphore pistas_libres = 10;
+semaphore pistas_liberar = 0;
+```
+
+#### Proceso 1 (Avión)
+
+```c
+while (true) {
+    mantenimiento();
+
+    signal(solicitud_pista);
+
+    wait(pistas_otorgadas);
+        despegar();
+        signal(pistas_librerar);
+
+    volar();
+
+    signal(solicitud_pista);
+
+    wait(pistas_otorgadas);
+        aterrizar();
+        signal(pistas_liberar);
+}
+```
+
+### Proceso 2 (Controlador entrada)
+
+```c
+while (true) {
+    wait(solicitud_pista);
+
+        wait(pistas_libres);
+
+        otorgarUnaPista();
+
+        wait(mutex_pistas);
+        pistasLibres--;
+        log(pistasLibres);
+        signal(mutex_pistas);
+
+        signal(pistas_otorgadas);
+
+}
+```
+
+### Proceso 3 (Controlador salida)
+
+```c
+while (true) {
+    wait(pistas_liberar);
+
+        liberarUnaPista();
+
+        wait(mutex_pistas);
+        pistasLibres++;
+        log(pistasLibres);
+        signal(mutex_pistas);
+
+        signal(pistas_libres);
+}
+```
