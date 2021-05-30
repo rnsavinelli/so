@@ -527,3 +527,69 @@ while (true) {
         signal(reaccion_arquero);
 }
 ```
+
+### Exercise 10
+
+```c
+#DEFINE N_PROCESOS 50
+#DEFINE N_PADRES 25
+```
+
+```c
+semaphore mutex_logs = 1;
+
+semaphore procesos_disponibles = N_PROCESOS - N_PADRES;
+
+semaphore padre_escribio = 0;
+```
+
+#### Proceso
+
+```c
+int main() {
+    while (true) {
+        wait(procesos_disponibles);
+        wait(procesos_disponibles);
+
+        pid = fork();
+
+        if (pid < 0) {
+
+            wait(mutex_logs);
+            log(‘Error’);
+            signal(mutex_logs);
+
+            signal(procesos_disponibles);
+            signal(procesos_disponibles);
+
+        } else if (pid == 0) { // Hijo
+
+            wait(padre_escribio);
+
+            wait(mutex_logs);
+            log(“Y yo soy el hijo”);
+            signal(mutex_logs);
+
+            realizarTarea();
+
+            // Finaliza el proceso hijo
+
+            signal(procesos_disponibles);
+
+            exit(0);
+
+        } else { // Padre
+
+            wait(mutex_logs);
+            log(pid + “ soy tu padre”);
+            signal(mutex_logs);
+
+            signal(padre_escribio);
+
+            wait(pid);
+
+            signal(procesos_disponibles);
+        }
+    }
+}
+```
