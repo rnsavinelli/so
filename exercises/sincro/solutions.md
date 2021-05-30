@@ -413,3 +413,117 @@ while (true) {
         signal(pistas_libres);
 }
 ```
+
+### Exercise 9
+
+```c
+#DEFINE JUGADORES 5
+```
+```c
+// Variable compartida
+bool GOL = FALSE;
+```
+```c
+semaphore mutex_gol = 1;
+
+semaphore jugador_posicionado[JUGADORES] = {0};
+semaphore habilitado_a_patear[JUGADORES] = {0};
+
+semaphore arquero_posicionado = 0;
+
+semaphore pateo_al_arco = 0;
+
+semaphore tiro_validado = 0;
+
+semaphore reaccion_arquero = 0;
+semaphore reaccion_jugador = 0;
+
+semaphore fin_de_jugada = 0;
+```
+
+#### Proceso 1 (Árbitro)
+
+```c
+pateador_actual = actual();
+
+while (true) {
+    wait(jugador_posicionado[pateador_actual]);
+
+        wait(arquero_posicionado);
+
+            dar_orden();
+            signal(habilitado_a_patear[pateador_actual]);
+
+    wait(fin_de_jugada);
+
+    wait(mutex_gol);
+    validar_tiro();
+    signal(mutex_gol);
+
+    signal(tiro_validado);
+    signal(tiro_validado);
+
+    wait(reaccion_jugador);
+    wait(reaccion_arquero);
+
+    pateador_actual = siguiente();
+}
+```
+
+#### Proceso 2 (Jugador)
+
+```c
+id = get_jugador_id();
+
+while (true) {
+    posicionarse();
+
+    signal(jugador_posicionado[id]);
+
+        wait(habilitado_a_patear[id]);
+
+            patear();
+
+            signal(pateo_al_arco);
+
+            wait(tiro_validado);
+
+            wait(mutex_gol);
+            if (GOL == TRUE){
+                festejar();
+            } else {
+                lamentarse();
+            }
+            signal(mutex_gol);
+
+            signal(reaccion_jugador);
+}
+```
+
+#### Proceso 3 (Arquero)
+
+```c
+while (true) {
+    posicionarse();
+
+    signal(arquero_posicionado);
+
+    wait(pateo_al_arco);
+
+        atajar();
+
+        signal(fin_de_jugada);
+
+        wait(tiro_validado);
+
+        wait(mutex_gol);
+        if (GOL == FALSE){
+            festejar();
+        } else {
+            lamentarse();
+        }
+        signal(mutex_gol);
+
+        signal(reaccion_arquero);
+}
+```
