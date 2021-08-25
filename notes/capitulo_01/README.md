@@ -40,6 +40,8 @@ En general, las instrucciones de máquina permiten leer estos bits mediante refe
 
 ## 1.3 Ejecución de instrucciones (páginas 13 a 17)
 
+(fetch instruction) -> (decode instruction) -> (excecute instruction) -> (halt or repeat this sequence with the next instruction)
+
 ![Execution Cycle](./execution-cycle.png)
 
 En su forma más simple el procesamiento de las instrucciones consta de tres pasos: _fetch_, _decode_ y _execute_.
@@ -58,13 +60,19 @@ El tercero a ejecutarla.
 
 Una **interrupción** es un mecanismo mediante el cual los módulos de E/S o la cpu pueden interrumpir el flujo normal de ejecución del procesador.
 
+EL HARDWARE DETECTA LAS INTERRUPCIONES, EL SISTEMA OPERATIVO LAS RESUELVE.
+
+CONTEXTO: Valores de los registros de la CPU en el momento que se realiza la interrupci\'on.
+
+IMPORTANTE: Existe una jerarquía/prioridades entre las interrupciones.
+
 ### Clases de interrupciones (página 17)
 
 #### Interrupciones por fallo del hardware
 
 Generadas por fallos tales como un corte de energía o un error de paridad de la memoria.
 
-#### Interrupciones de programa
+#### Interrupciones de programa o software
 
 Generadas por alguna condición que se produce como resultado de la ejecución de una instrucción, como el desbordamiento aritmético, la división por cero, una referencia a una zona de memoria fuera del espacio permitido al usuario, etc.
 
@@ -78,11 +86,15 @@ Generadas por un controlador de E/S, para indicar que una operación ha terminad
 
 #### Interrupciones enmascarables
 
-Pueden ser ignoradas.
+Pueden ser ignoradas/postergadas. No son críticas.
 
 #### Interrupciones no enmascarables
 
-No pueden ser ignoradas.
+No pueden ser ignoradas. Son críticas.
+
+#### Interrupciones de hardware
+
+Provienen de cualquier dispositivo que no es la CPU.
 
 ### Tratamiento de las interrupciones (página 20 a 24)
 
