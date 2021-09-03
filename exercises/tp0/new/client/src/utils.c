@@ -1,6 +1,5 @@
 #include "utils.h"
 
-
 void* serializar_paquete(t_paquete* paquete, int bytes)
 {
 	void * magic = malloc(bytes);
@@ -32,7 +31,10 @@ int crear_conexion(char *ip, char* puerto)
 	int socket_cliente = 0;
 
 	// Ahora que tenemos el socket, vamos a conectarlo
+	socket_cliente = socket(server_info->ai_family, server_info->ai_socktype, server_info->ai_protocol);
 
+	if(connect(socket_cliente, server_info->ai_addr, server_info->ai_addrlen) == -1)
+		socket_cliente = -1;
 
 	freeaddrinfo(server_info);
 
@@ -59,7 +61,6 @@ void enviar_mensaje(char* mensaje, int socket_cliente)
 	eliminar_paquete(paquete);
 }
 
-
 void crear_buffer(t_paquete* paquete)
 {
 	paquete->buffer = malloc(sizeof(t_buffer));
@@ -69,12 +70,12 @@ void crear_buffer(t_paquete* paquete)
 
 t_paquete* crear_super_paquete(void)
 {
-	//me falta un malloc!
 	t_paquete* paquete;
 
-	//descomentar despues de arreglar
-	//paquete->codigo_operacion = PAQUETE;
-	//crear_buffer(paquete);
+	paquete = (t_paquete*) malloc(sizeof(t_paquete));
+
+	paquete->codigo_operacion = PAQUETE;
+	crear_buffer(paquete);
 	return paquete;
 }
 

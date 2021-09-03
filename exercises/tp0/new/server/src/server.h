@@ -1,12 +1,16 @@
-#ifndef SERVER_H_
-#define SERVER_H_
+#pragma once
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <commons/log.h>
+
 #include "utils.h"
 
-void iterator(t_log* logger, char* value);
+#define forever() while(1)
 
-#endif /* SERVER_H_ */
+void terminar_programa(int conexion, t_log* logger);
+
+void iterator(char* value);
+
+void element_destroyer(void* element);

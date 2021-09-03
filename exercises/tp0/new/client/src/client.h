@@ -10,6 +10,10 @@
 
 #include "utils.h"
 
+#define PROGRAM_NAME "client"
+
+#define LOG_FILE "client.log"
+#define CONFIGURATION_FILE "client.cfg"
 
 t_log* iniciar_logger(void);
 t_config* iniciar_config(void);

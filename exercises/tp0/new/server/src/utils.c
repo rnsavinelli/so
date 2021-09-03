@@ -1,27 +1,42 @@
 #include"utils.h"
 
+extern t_log* g_logger;
+
 int iniciar_servidor(void)
 {
 	int socket_servidor;
 
-    struct addrinfo hints, *servinfo, *p;
+    struct addrinfo hints, *server_info, *p;
 
-    memset(&hints, 0, sizeof(hints));
+    memset(&hints, 0, (size_t) sizeof(hints));
+
     hints.ai_family = AF_UNSPEC;
     hints.ai_socktype = SOCK_STREAM;
     hints.ai_flags = AI_PASSIVE;
 
-    getaddrinfo(IP, PUERTO, &hints, &servinfo);
+    getaddrinfo(IP, PUERTO, &hints, &server_info);
 
-    // Creamos el socket de escucha del servidor
+    for (p=server_info; p != NULL; p = p->ai_next)
+    {
+		// Creamos el socket de escucha del servidor
+        if ((socket_servidor = socket(p->ai_family, p->ai_socktype, p->ai_protocol)) == -1)
+            continue;
 
-    // Asociamos el socket a un puerto
+    	// Asociamos el socket a un puerto
+        if (bind(socket_servidor, p->ai_addr, p->ai_addrlen) == -1) {
+            close(socket_servidor);
+            continue;
+        }
+
+        break;
+    }
 
     // Escuchamos las conexiones entrantes
+	listen(socket_servidor, SOMAXCONN);
 
-    freeaddrinfo(servinfo);
+    freeaddrinfo(server_info);
 
-    log_trace(logger, "Listo para escuchar a mi cliente");
+    log_trace(g_logger, "Listo para escuchar a mi cliente");
 
     return socket_servidor;
 }
@@ -29,12 +44,12 @@ int iniciar_servidor(void)
 int esperar_cliente(int socket_servidor)
 {
 	struct sockaddr_in dir_cliente;
-	int tam_direccion = sizeof(struct sockaddr_in);
+	socklen_t tam_direccion = sizeof(struct sockaddr_in);
 
 	// Aceptamos un nuevo cliente
-	int socket_cliente = 0;
+	int socket_cliente = accept(socket_servidor, (void*) &dir_cliente, &tam_direccion);
 
-	log_info(logger, "Se conecto un cliente!");
+	log_info(g_logger, "Se conecto un cliente!");
 
 	return socket_cliente;
 }
@@ -66,7 +81,7 @@ void recibir_mensaje(int socket_cliente)
 {
 	int size;
 	char* buffer = recibir_buffer(&size, socket_cliente);
-	log_info(logger, "Me llego el mensaje %s", buffer);
+	log_info(g_logger, "Me llego el mensaje %s", buffer);
 	free(buffer);
 }
 
@@ -88,8 +103,14 @@ t_list* recibir_paquete(int socket_cliente)
 		memcpy(valor, buffer+desplazamiento, tamanio);
 		desplazamiento+=tamanio;
 		list_add(valores, valor);
+		free(valor);
 	}
 	free(buffer);
+
 	return valores;
-	return NULL;
+}
+
+void liberar_conexion(int socket)
+{
+	close(socket);
 }
